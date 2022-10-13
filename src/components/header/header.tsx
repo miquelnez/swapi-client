@@ -8,7 +8,7 @@ import {
   Link,
   HStack,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from '../color-mode-switcher/color-mode-switcher';
+import ColorModeSwitcher from '../color-mode-switcher/color-mode-switcher';
 
 type HeaderProps = {
   testId?: string;
@@ -18,16 +18,16 @@ const Header = ({ testId = 'header' }: HeaderProps) => {
   // const navigate = useNavigate();
   return (
     <Box
-      data-testid={`${testId}-box`}
-      data-test={`${testId}-box`}
-      bg={useColorModeValue('gray.100', 'gray.900')}
       px={4}
+      bg={useColorModeValue('gray.100', 'gray.900')}
+      data-test={`${testId}-box`}
+      data-testid={`${testId}-box`}
     >
-      <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-        <Link p={2} as={RouterLink} to="/" fontSize={'sm'} fontWeight={500}>
-          <Image objectFit="cover" src="/assets/logoipsum-254.svg" alt="Logo" />
+      <Flex align={'center'} justify={'space-between'} h={16}>
+        <Link as={RouterLink} p={2} fontSize={'sm'} fontWeight={500} to="/">
+          <Image objectFit="cover" alt="Logo" src="/assets/logoipsum-254.svg" />
         </Link>
-        <Flex alignItems={'center'}>
+        <Flex align={'center'}>
           <HStack>
             <ColorModeSwitcher />
             <span>TODO: menu</span>

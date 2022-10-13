@@ -11,7 +11,9 @@ const Layout = ({ children }: LayoutProps) => {
   return (
     <>
       <Header />
-      <Box as="main" data-testid="layout-box" data-test="layout-box">{children}</Box>
+      <Box as="main" data-test="layout-box" data-testid="layout-box">
+        {children}
+      </Box>
       <Footer />
     </>
   );

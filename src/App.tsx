@@ -14,7 +14,7 @@ import { Logo } from './Logo';
 
 export const App = () => (
   <ChakraProvider theme={theme}>
-    <Box textAlign="center" fontSize="xl">
+    <Box fontSize="xl" textAlign="center">
       <Grid minH="100vh" p={3}>
         <ColorModeSwitcher justifySelf="flex-end" />
         <VStack spacing={8}>
@@ -24,10 +24,10 @@ export const App = () => (
           </Text>
           <Link
             color="teal.500"
-            href="https://chakra-ui.com"
             fontSize="2xl"
-            target="_blank"
+            href="https://chakra-ui.com"
             rel="noopener noreferrer"
+            target="_blank"
           >
             Learn Chakra
           </Link>

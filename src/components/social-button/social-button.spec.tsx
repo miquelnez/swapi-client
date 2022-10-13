@@ -5,7 +5,12 @@ import SocialButton from './social-button';
 
 describe('SocialButton', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SocialButton label={'test'} href={'#'}> <FaTwitter /></SocialButton>);
+    const { baseElement } = render(
+      <SocialButton label={'test'} href={'#'}>
+        {' '}
+        <FaTwitter />
+      </SocialButton>
+    );
     expect(baseElement).toBeTruthy();
   });
 });

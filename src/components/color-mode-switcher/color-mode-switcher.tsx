@@ -3,29 +3,30 @@ import {
   useColorMode,
   useColorModeValue,
   IconButton,
+  // eslint-disable-next-line import/named
   IconButtonProps,
 } from '@chakra-ui/react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
 type ColorModeSwitcherProps = Omit<IconButtonProps, 'aria-label'>;
 
-export const ColorModeSwitcher = (props: ColorModeSwitcherProps) => {
+const ColorModeSwitcher = (props: ColorModeSwitcherProps) => {
   const { toggleColorMode } = useColorMode();
   const text = useColorModeValue('dark', 'light');
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
 
   return (
     <IconButton
-      data-testid="color-mode-switcher"
-      data-test="color-mode-switcher"
-      size="md"
-      fontSize="lg"
-      variant="ghost"
+      ml="2"
       color="current"
-      marginLeft="2"
-      onClick={toggleColorMode}
-      icon={<SwitchIcon />}
+      fontSize="lg"
       aria-label={`Switch to ${text} mode`}
+      data-test="color-mode-switcher"
+      data-testid="color-mode-switcher"
+      icon={<SwitchIcon />}
+      onClick={toggleColorMode}
+      size="md"
+      variant="ghost"
       {...props}
     />
   );

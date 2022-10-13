@@ -8,15 +8,21 @@ type PageProps = {
   testId?: string;
 };
 
-const PageLayout = ({ title, description, children, testId='page-layout' }: PageProps) => {
+const PageLayout = ({
+  title,
+  description,
+  children,
+  testId = 'page-layout',
+}: PageProps) => {
   return (
     <Container
-      data-testid={`${testId}-container`} data-test={`${testId}-container`}
       display="flex"
       maxW="100%"
-      minH={{ base: 'auto', md: '80vh', sm: '77vh'}}
-      // px={{ base: 4, lg: 8 }}
+      minH={{ base: 'auto', md: '80vh', sm: '77vh' }}
       centerContent
+      data-test={`${testId}-container`}
+      // px={{ base: 4, lg: 8 }}
+      data-testid={`${testId}-container`}
     >
       {children}
     </Container>

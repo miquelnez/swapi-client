@@ -15,19 +15,19 @@ type FooterProps = {
 export default function Footer({ testId = 'footer' }: FooterProps) {
   return (
     <Box
-      data-testid={`${testId}-box`}
-      data-test={`${testId}-box`}
-      bg={useColorModeValue('gray.50', 'gray.900')}
       color={useColorModeValue('gray.700', 'gray.200')}
+      bg={useColorModeValue('gray.50', 'gray.900')}
+      data-test={`${testId}-box`}
+      data-testid={`${testId}-box`}
     >
       <Container
         as={Stack}
+        align={{ base: 'center', md: 'center' }}
+        justify={{ base: 'center', md: 'space-between' }}
+        direction={{ base: 'column', md: 'row' }}
         maxW={'12xl'}
         py={4}
-        direction={{ base: 'column', md: 'row' }}
         spacing={4}
-        justify={{ base: 'center', md: 'space-between' }}
-        align={{ base: 'center', md: 'center' }}
       >
         <Text>© 2022 miquelnez</Text>
         <Stack direction={'row'} spacing={6}>

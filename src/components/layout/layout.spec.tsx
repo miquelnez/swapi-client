@@ -5,9 +5,9 @@ import Layout from './layout';
 
 const renderComponent = async (routerEntries = ['/']) =>
   render(
-      <MemoryRouter initialEntries={routerEntries}>
-        <Layout />
-      </MemoryRouter>
+    <MemoryRouter initialEntries={routerEntries}>
+      <Layout />
+    </MemoryRouter>
   );
 
 describe('Layout', () => {
