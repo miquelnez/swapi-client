@@ -33,10 +33,12 @@ export const getPeopleId = createAsyncThunk(
 interface PeopleState {
   people: People[];
   selectedPeople?: People;
+  loading: boolean;
 }
 const initialState: PeopleState = {
   people: [],
   selectedPeople: undefined,
+  loading: false,
 };
 
 const peopleSlice = createSlice({
@@ -44,9 +46,15 @@ const peopleSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
+    builder.addCase(getPeople.pending, state => {
+      state.selectedPeople = undefined;
+      state.people = [];
+      state.loading = true;
+    });
     builder.addCase(getPeople.fulfilled, (state, { payload }) => {
       state.selectedPeople = undefined;
       state.people = payload.results;
+      state.loading = false;
     });
     builder.addCase(getPeopleId.fulfilled, (state, { payload }) => {
       state.selectedPeople = payload;
