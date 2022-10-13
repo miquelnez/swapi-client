@@ -1,11 +1,15 @@
 import { ChakraProvider, ColorModeScript, theme } from '@chakra-ui/react';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { App } from './App';
 import Layout from './components/layout/layout';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+import { setupStore } from './state/store';
+
+const store = setupStore();
 
 const container = document.getElementById('root');
 if (!container) throw new Error('Failed to find the root element');
@@ -15,12 +19,13 @@ root.render(
   <React.StrictMode>
     <ColorModeScript />
     <ChakraProvider theme={theme}>
-      {/* <App /> */}
-      <BrowserRouter>
-        <Layout>
-          <App />
-        </Layout>
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Layout>
+            <App />
+          </Layout>
+        </BrowserRouter>
+      </Provider>
     </ChakraProvider>
   </React.StrictMode>
 );

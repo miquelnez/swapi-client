@@ -1,19 +1,21 @@
 import axios from 'axios';
+import { setupCache } from 'axios-cache-interceptor';
 import { RequestsOptions } from '../types/types';
 
 const client = (() => {
-  return axios.create({
-    baseURL: process.env.REACT_APP_SWAPI_ENDPOINT,
-  });
+  return setupCache(
+    axios.create({
+      baseURL: process.env.REACT_APP_SWAPI_ENDPOINT,
+    })
+  );
 })();
 
 const request = async function (options: RequestsOptions) {
   // success handler
   const onSuccess = function (response: any) {
-    // const {
-    //   data: { data },
-    // } = response;
-    return response;
+    const { data } = response;
+    console.log('data', data);
+    return data;
   };
 
   // error handler
