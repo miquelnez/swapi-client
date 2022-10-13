@@ -1,3 +1,22 @@
+# SWAPI-CLIENT
+
+## scope
+
+- 'wiki' on characters, planets, and star ships using The Star Wars API (https://swapi.dev/) in a SPA with a favourites list feature.
+- React with some state management library
+- Each character should have a 'Favourite' button which allows the user to save this character as a favourite. Displaying these favourites somehow and the ability to remove them again from the list (and from the character page) should be implemented.
+- Storing this data in memory (via some state management) or local storage is fine. It only needs to persist for the current session.
+
+- The homepage should include a list of characters (the first page of characters in the `/people/` response from the API is sufficient).
+- Each character should then have their profile page where you can see their bio and links to their home planet and star ships pages.
+- Linked planets and star ships should also have a 'bio' page.
+- You should be able to search for characters, plants, and star ships.
+- Implement client-side caching (LRU) of requests so you are not making API calls you have previously made
+- Loading states should be taken into account.
+- Handling errors with correct messages when/if the API call fails.
+
+---
+
 This project was bootstrapped with
 [Create React App](https://github.com/facebook/create-react-app).
 

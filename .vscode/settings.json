@@ -1,0 +1,18 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.fixAll.eslint": true
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "eslint.validate": ["javascript", "typescript"],
+  "files.exclude": {
+    "package-lock.json": true,
+    "**/node_modules": true
+  },
+  "files.associations": {
+    ".env.*": "properties",
+    "Dockerfile-*": "dockerfile"
+  }
+ }
