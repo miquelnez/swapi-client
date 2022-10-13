@@ -2,7 +2,7 @@ import request from './api-request';
 import { People, Peoples } from '../types/types';
 
 export default class PeoplesService {
-  static getPeoples(page?: number) {
+  static getPeople(page?: number) {
     return request({
       url: `people/`,
       method: 'GET',

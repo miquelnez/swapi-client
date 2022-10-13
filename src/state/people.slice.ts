@@ -2,11 +2,11 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import PeoplesService from './PeopleService';
 import { assertIsError, People, Peoples, ParamsPayload } from '../types/types';
 
-export const getPeoples = createAsyncThunk(
-  'people/getPeoples',
+export const getPeople = createAsyncThunk(
+  'people/getPeople',
   async ({ page }: ParamsPayload, thunkAPI) => {
     try {
-      const response: Peoples = await PeoplesService.getPeoples(page);
+      const response: Peoples = await PeoplesService.getPeople(page);
       return response;
     } catch (error) {
       assertIsError(error);
@@ -44,7 +44,7 @@ const peopleSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(getPeoples.fulfilled, (state, { payload }) => {
+    builder.addCase(getPeople.fulfilled, (state, { payload }) => {
       state.selectedPeople = undefined;
       state.peoples = payload.results;
     });
