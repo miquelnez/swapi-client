@@ -15,7 +15,7 @@ const PlanetsPage = ({ testId = 'planets-page' }: PlanetsProps) => {
     >
       <Grid minH="100vh" p={3}>
         <VStack spacing={8}>
-          <Text>PEOPLE</Text>
+          <Text>PLANETS</Text>
         </VStack>
       </Grid>
     </Box>

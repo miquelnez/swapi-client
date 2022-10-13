@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Box, Text, Link, VStack, Code, Grid } from '@chakra-ui/react';
-import { Logo } from '../../Logo';
+import { Box, Text, Link, VStack, Grid, SimpleGrid } from '@chakra-ui/react';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { getPeople } from '../../state/people.slice';
 import { useEffect } from 'react';
+import PeopleCard from '../../components/people-card/people-card';
 
 interface HomePageProps {
   testId?: string;
@@ -29,21 +29,33 @@ const HomePage = ({ testId = 'home-page' }: HomePageProps) => {
     >
       <Grid minH="100vh" p={3}>
         <VStack spacing={8}>
-          <Logo h="40vmin" pointerEvents="none" />
+          <SimpleGrid columns={[1, null, 4]} spacing="1px">
+            {!loading && people ? (
+              <>
+                {people.map((person: any, index) => (
+                  <PeopleCard
+                    key={index}
+                    person={person}
+                    // onClickAdd={onClickAdd}
+                  ></PeopleCard>
+                ))}
+              </>
+            ) : (
+              'Loading'
+            )}
+          </SimpleGrid>
+
           <Text>{JSON.stringify(loading)}</Text>
           <Text>{JSON.stringify(people)}</Text>
           <Text>{JSON.stringify(selectedPeople)}</Text>
-          <Text>
-            Edit <Code fontSize="xl">src/App.tsx</Code> and save to reload.
-          </Text>
           <Link
             color="teal.500"
             fontSize="2xl"
-            href="https://chakra-ui.com"
+            href="https://swapi.dev/"
             rel="noopener noreferrer"
             target="_blank"
           >
-            Learn Chakra
+            Built with SWAPI
           </Link>
         </VStack>
       </Grid>

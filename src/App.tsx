@@ -5,6 +5,8 @@ import Wrapper from './components/wrapper/wrapper';
 import HomePage from './pages/home/home-page';
 import PeoplePage from './pages/people/people-page';
 import NotFound from './pages/not-found/not-found';
+import PlanetsPage from './pages/planets/planets-page';
+import StarshipsPage from './pages/starships/starships-page';
 
 export const App = () => (
   <PageLayout title="title" description="description">
@@ -22,6 +24,22 @@ export const App = () => (
         element={
           <Wrapper>
             <PeoplePage />
+          </Wrapper>
+        }
+      />
+      <Route
+        path="/planets/:id"
+        element={
+          <Wrapper>
+            <PlanetsPage />
+          </Wrapper>
+        }
+      />
+      <Route
+        path="/starships/:id"
+        element={
+          <Wrapper>
+            <StarshipsPage />
           </Wrapper>
         }
       />
