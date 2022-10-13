@@ -11,11 +11,9 @@ import { RequestsOptions } from '../types/types';
 // })();
 
 const client = (() => {
-  // return setupCache(
-  axios.create({
+  return axios.create({
     baseURL: process.env.REACT_APP_SWAPI_ENDPOINT,
   });
-  // );
 })();
 
 const request = async function (options: RequestsOptions) {
