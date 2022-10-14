@@ -34,11 +34,13 @@ interface PeopleState {
   people: People[];
   selectedPeople?: People;
   loading: boolean;
+  error: boolean;
 }
 const initialState: PeopleState = {
   people: [],
   selectedPeople: undefined,
   loading: false,
+  error: false,
 };
 
 const peopleSlice = createSlice({
@@ -50,16 +52,35 @@ const peopleSlice = createSlice({
       state.selectedPeople = undefined;
       state.people = [];
       state.loading = true;
+      state.error = false;
     });
     builder.addCase(getPeople.fulfilled, (state, { payload }) => {
       state.selectedPeople = undefined;
       state.people = payload.results;
       state.loading = false;
+      state.error = false;
+    });
+    builder.addCase(getPeople.rejected, state => {
+      state.selectedPeople = undefined;
+      state.people = [];
+      state.loading = false;
+      state.error = true;
+    });
+    builder.addCase(getPeopleId.pending, state => {
+      state.selectedPeople = undefined;
+      state.loading = true;
+      state.error = false;
     });
     builder.addCase(getPeopleId.fulfilled, (state, { payload }) => {
       state.selectedPeople = payload;
+      state.loading = false;
+      state.error = false;
     });
-    // TODO: rejecteds
+    builder.addCase(getPeopleId.rejected, state => {
+      state.selectedPeople = undefined;
+      state.loading = false;
+      state.error = true;
+    });
   },
 });
 export const { reducer } = peopleSlice;

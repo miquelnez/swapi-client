@@ -1,4 +1,6 @@
 import { reducer as peopleSlice } from './people.slice';
+import { reducer as planetsSlice } from './planets.slice';
+import { reducer as starshipsSlice } from './starships.slice';
 import {
   combineReducers,
   configureStore,
@@ -9,6 +11,8 @@ import logger from 'redux-logger';
 
 const rootReducer = combineReducers({
   people: peopleSlice,
+  planets: planetsSlice,
+  starships: starshipsSlice,
 });
 
 export function setupStore(preloadedState?: PreloadedState<RootState>) {
