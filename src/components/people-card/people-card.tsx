@@ -18,6 +18,8 @@ import {
   BsCalendar,
   BsFillHouseFill,
 } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
+import { getId } from '../../helpers/get-id';
 
 import { People } from '../../types/types';
 import { Feature } from '../feature/feature';
@@ -32,8 +34,24 @@ export default function PeopleCard({
   person,
   testId = 'people-card',
 }: PeopleCardProps) {
+  const navigate = useNavigate();
+
+  const handleGoPlanet = (url: string) => {
+    const id = getId(url);
+    navigate(`/planets/${id}`);
+  };
+
+  const handleGoStarship = (url: string) => {
+    const id = getId(url);
+    navigate(`/starships/${id}`);
+  };
+
   return (
-    <Center py={6}>
+    <Center
+      py={6}
+      data-test={`${testId}-container`}
+      data-testid={`${testId}-container`}
+    >
       <Box
         w={'full'}
         maxW={'320px'}
@@ -46,17 +64,6 @@ export default function PeopleCard({
         <Avatar
           pos={'relative'}
           mb={4}
-          _after={{
-            content: '""',
-            w: 4,
-            h: 4,
-            bg: 'green.300',
-            border: '2px solid white',
-            rounded: 'full',
-            pos: 'absolute',
-            bottom: 0,
-            right: 3,
-          }}
           size={'xl'}
           src={`https://loremflickr.com/250/250/${person.name}`}
         />
@@ -76,7 +83,9 @@ export default function PeopleCard({
           <Feature
             fontWeight={600}
             fontSize={'sm'}
-            isHomeworld={true}
+            // isHomeworld={true}
+            cursor={'pointer'}
+            onClick={() => handleGoPlanet(person.homeworld)}
             icon={
               <Icon as={BsFillHouseFill} w={5} h={5} color={'yellow.500'} />
             }
@@ -115,6 +124,8 @@ export default function PeopleCard({
                 py={1}
                 fontWeight={'400'}
                 bg={'gray.250'}
+                cursor={'pointer'}
+                onClick={() => handleGoStarship(starship)}
               >
                 {starship}
               </Badge>

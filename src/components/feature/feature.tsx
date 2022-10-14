@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 import { Flex, Stack, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
-import { getId } from '../../helpers/get-id';
 
 interface FeatureProps {
   text: string;
@@ -10,6 +9,7 @@ interface FeatureProps {
   fontWeight?: number;
   fontSize?: string;
   isHomeworld?: boolean;
+  [x: string]: any;
 }
 
 export const Feature = ({
@@ -18,22 +18,10 @@ export const Feature = ({
   iconBg,
   fontWeight = 600,
   fontSize = 'md',
-  isHomeworld = false,
+  ...rest
 }: FeatureProps) => {
-  const navigate = useNavigate();
-
-  const handleGoPlanet = (url: string) => {
-    const id = getId(url);
-    navigate(`/planets/${id}`);
-  };
-
-  const handleGoStarship = (url: string) => {
-    const id = getId(url);
-    navigate(`/starships/${id}`);
-  };
-
   return (
-    <Stack align={'center'} direction={'row'}>
+    <Stack align={'center'} direction={'row'} {...rest}>
       <Flex
         align={'center'}
         justify={'center'}
@@ -44,11 +32,7 @@ export const Feature = ({
       >
         {icon}
       </Flex>
-      <Text
-        fontSize={fontSize}
-        fontWeight={fontWeight}
-        onClick={isHomeworld ? () => handleGoPlanet(text) : () => {}}
-      >
+      <Text fontSize={fontSize} fontWeight={fontWeight}>
         {text}
       </Text>
     </Stack>
