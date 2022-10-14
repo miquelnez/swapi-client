@@ -1,8 +1,4 @@
 // /** @type {import('ts-jest').JestConfigWithTsJest} */
-// module.exports = {
-//   preset: 'ts-jest',
-//   testEnvironment: 'node',
-// };
 
 module.exports = {
   preset: 'ts-jest',
@@ -10,5 +6,5 @@ module.exports = {
   transform: {
     '^.+\\.ts?$': 'ts-jest',
   },
-  // transformIgnorePatterns: ['<rootDir>/node_modules/axios'],
+  // transformIgnorePatterns: ['<rootDir>/node_modules/'],
 };
