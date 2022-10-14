@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import PeoplesService from './PeopleService';
+import PeoplesService from '../services/PeopleService';
 import { assertIsError, People, Peoples, ParamsPayload } from '../types/types';
 
 export const getPeople = createAsyncThunk(
