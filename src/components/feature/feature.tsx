@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
 import { Flex, Stack, Text } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
 
 interface FeatureProps {
   text: string;
