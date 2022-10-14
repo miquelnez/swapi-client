@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 import { Flex, Stack, Text } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
+import { getId } from '../../helpers/get-id';
 
 interface FeatureProps {
   text: string;
@@ -21,13 +22,14 @@ export const Feature = ({
 }: FeatureProps) => {
   const navigate = useNavigate();
 
-  const handleGo = (url: string) => {
-    const regex = /\d+/gm;
-    const results = regex.exec(url); // url.match('\d+\');
-    console.log('results', url, results);
-    let planetId = '';
-    if (results !== null) planetId = results[0];
-    navigate(`/planets/${planetId}`);
+  const handleGoPlanet = (url: string) => {
+    const id = getId(url);
+    navigate(`/planets/${id}`);
+  };
+
+  const handleGoStarship = (url: string) => {
+    const id = getId(url);
+    navigate(`/starships/${id}`);
   };
 
   return (
@@ -45,7 +47,7 @@ export const Feature = ({
       <Text
         fontSize={fontSize}
         fontWeight={fontWeight}
-        onClick={isHomeworld ? () => handleGo(text) : () => {}}
+        onClick={isHomeworld ? () => handleGoPlanet(text) : () => {}}
       >
         {text}
       </Text>

@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../state/hooks';
 import { getPeople } from '../../state/people.slice';
 import { useEffect } from 'react';
 import PeopleCard from '../../components/people-card/people-card';
+import PeopleCardSimple from '../../components/people-card-simple/people-card-simple';
 
 interface HomePageProps {
   testId?: string;
@@ -33,11 +34,16 @@ const HomePage = ({ testId = 'home-page' }: HomePageProps) => {
             {!loading && people ? (
               <>
                 {people.map((person: any, index) => (
-                  <PeopleCard
+                  // <PeopleCard
+                  //   key={index}
+                  //   person={person}
+                  //   // onClickAdd={onClickAdd}
+                  // ></PeopleCard>
+                  <PeopleCardSimple
                     key={index}
                     person={person}
                     // onClickAdd={onClickAdd}
-                  ></PeopleCard>
+                  ></PeopleCardSimple>
                 ))}
               </>
             ) : (
