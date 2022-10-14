@@ -1,7 +1,7 @@
 import request from './api-request';
 import { People, Peoples } from '../types/types';
 
-export default class PeoplesService {
+export default class PeopleService {
   static getPeople(page?: number) {
     return request({
       url: `people/`,

@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import PeoplesService from '../services/PeopleService';
+import PeopleService from '../services/PeopleService';
 import { assertIsError, People, Peoples, ParamsPayload } from '../types/types';
 
 export const getPeople = createAsyncThunk(
   'people/getPeople',
   async ({ page }: ParamsPayload, thunkAPI) => {
     try {
-      const response: Peoples = await PeoplesService.getPeople(page);
+      const response: Peoples = await PeopleService.getPeople(page);
       return response;
     } catch (error) {
       assertIsError(error);
@@ -20,7 +20,7 @@ export const getPeopleId = createAsyncThunk(
   'people/getPeopleId',
   async (id: number, thunkAPI) => {
     try {
-      const response: People = await PeoplesService.getPeopleId(id);
+      const response: People = await PeopleService.getPeopleId(id);
       return response;
     } catch (error) {
       assertIsError(error);
