@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import PlanetsService from '../services/PlanetsService';
+import SWService from '../services/SWService';
 import { assertIsError, Planet } from '../types/types';
 
 export const getPlanetId = createAsyncThunk(
   'planet/getPlanetId',
   async (id: number, thunkAPI) => {
     try {
-      const response: Planet = await PlanetsService.getPlanetId(id);
+      const response: Planet = await SWService.getPlanetId(id);
       return response;
     } catch (error) {
       assertIsError(error);
@@ -16,7 +16,7 @@ export const getPlanetId = createAsyncThunk(
   }
 );
 
-interface PlanetState {
+export interface PlanetState {
   planets: Planet[];
   selectedPlanet?: Planet;
   loading: boolean;
@@ -43,6 +43,7 @@ const planetsSlice = createSlice({
       state.selectedPlanet = payload;
       state.loading = false;
       state.error = false;
+      state.planets = [...state.planets, payload];
     });
     builder.addCase(getPlanetId.rejected, state => {
       state.selectedPlanet = undefined;

@@ -58,6 +58,7 @@ const StarshipsPage = ({ testId = 'starships-page' }: StarshipsProps) => {
         <Grid minH="100vh" p={3}>
           <VStack spacing={8}>
             <Text>STARSHIPS</Text>
+            <Text>{JSON.stringify(selectedStarship)}</Text>
             {!loading && selectedStarship ? (
               <StarshipCard starship={selectedStarship}></StarshipCard>
             ) : (

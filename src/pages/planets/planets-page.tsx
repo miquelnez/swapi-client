@@ -55,6 +55,8 @@ const PlanetsPage = ({ testId = 'planets-page' }: PlanetsProps) => {
         <Grid minH="100vh" p={3}>
           <VStack spacing={8}>
             <Text>PLANETS</Text>
+            <Text>{JSON.stringify(loading)}</Text>
+            <Text>{JSON.stringify(selectedPlanet)}</Text>
             {!loading && selectedPlanet ? (
               <PlanetCard planet={selectedPlanet}></PlanetCard>
             ) : (

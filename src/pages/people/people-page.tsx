@@ -52,8 +52,8 @@ const PeoplePage = ({ testId = 'people-page' }: PeopleProps) => {
         data-test={`${testId}-container`}
         data-testid={`${testId}-container`}
       >
-        {/* <Text>{JSON.stringify(loading)}</Text>
-        <Text>{JSON.stringify(selectedPeople)}</Text> */}
+        <Text>{JSON.stringify(loading)}</Text>
+        <Text>{JSON.stringify(selectedPeople)}</Text>
         <Grid minH="100vh" p={3}>
           <VStack spacing={8}>
             <Text>PEOPLE {id}</Text>
