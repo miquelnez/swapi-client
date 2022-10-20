@@ -65,6 +65,7 @@ export interface People {
   url: string;
   homeworldSearchable?: SearchablePlanet;
   starshipsSearchable?: SearchableStarship[];
+  starshipsNames?: string[];
 }
 
 export interface Planet {

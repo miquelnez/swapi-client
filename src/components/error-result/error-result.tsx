@@ -1,11 +1,12 @@
-import { Box, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading } from '@chakra-ui/react';
 import { CloseIcon } from '@chakra-ui/icons';
 
 interface ErrorResultProps {
   testId?: string;
+  message?: string;
 }
 
-const ErrorResult = ({ testId = 'home-page' }: ErrorResultProps) => {
+const ErrorResult = ({ message, testId = 'home-page' }: ErrorResultProps) => {
   return (
     <Box
       px={6}
@@ -32,9 +33,7 @@ const ErrorResult = ({ testId = 'home-page' }: ErrorResultProps) => {
         It has been an error
       </Heading>
       {/* <Text color={'gray.500'}>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
-        eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-        voluptua.
+        message
       </Text> */}
     </Box>
   );

@@ -4,14 +4,7 @@ import {
   getSearchableStarships,
 } from '../helpers/get-homeworlds-starships';
 import SWService from '../services/SWService';
-import {
-  assertIsError,
-  People,
-  Peoples,
-  ParamsPayload,
-  Planet,
-} from '../types/types';
-import { PlanetState } from './planets.slice';
+import { assertIsError, People, Peoples, ParamsPayload } from '../types/types';
 import { RootState } from './store';
 
 export const getPeople = createAsyncThunk(
@@ -49,7 +42,6 @@ export const makePeopleSearchable = createAsyncThunk<
   void,
   { state: RootState }
 >('people/makePeopleSearchable', async (_, { getState }) => {
-  // const { planet } = getState() as { planet: PlanetState };
   const { planets } = getState();
   const { starships } = getState();
   const { people } = getState();
@@ -76,6 +68,7 @@ export const makePeopleSearchable = createAsyncThunk<
 
 interface PeopleState {
   people: People[];
+  loved: string[];
   selectedPeople?: People;
   loading: boolean;
   error: boolean;
@@ -83,6 +76,7 @@ interface PeopleState {
 }
 const initialState: PeopleState = {
   people: [],
+  loved: [],
   selectedPeople: undefined,
   loading: false,
   error: false,
