@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import StarshipsService from '../services/StarshipsService';
+import SWService from '../services/SWService';
 import { assertIsError, Starship } from '../types/types';
 
 export const getStarshipId = createAsyncThunk(
   'starship/getStarshipId',
   async (id: number, thunkAPI) => {
     try {
-      const response: Starship = await StarshipsService.getStarshipId(id);
+      const response: Starship = await SWService.getStarshipId(id);
       return response;
     } catch (error) {
       assertIsError(error);
@@ -43,6 +43,7 @@ const starshipsSlice = createSlice({
       state.selectedStarship = payload;
       state.loading = false;
       state.error = false;
+      state.starships = [...state.starships, payload];
     });
     builder.addCase(getStarshipId.rejected, state => {
       state.selectedStarship = undefined;

@@ -1,23 +1,6 @@
-// import axios from 'axios';
-// import { default as axios } from 'axios';
-// import { setupCache } from 'axios-cache-interceptor';
 import { RequestsOptions } from '../types/types';
 
 const baseURL = process.env.REACT_APP_SWAPI_ENDPOINT;
-
-// const client = (() => {
-//   return setupCache(
-//     axios.create({
-//       baseURL: process.env.REACT_APP_SWAPI_ENDPOINT,
-//     })
-//   );
-// })();
-
-// const client = (() => {
-//   return axios.create({
-//     baseURL: process.env.REACT_APP_SWAPI_ENDPOINT,
-//   });
-// })();
 
 async function getData(url = '') {
   const response = await fetch(`${baseURL}${url}`, {
@@ -27,12 +10,11 @@ async function getData(url = '') {
     credentials: 'same-origin', // include, *same-origin, omit
     headers: {
       'Content-Type': 'application/json',
-      // 'Content-Type': 'application/x-www-form-urlencoded',
     },
     redirect: 'follow', // manual, *follow, error
     referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
   });
-  return response.json(); // parses JSON response into native JavaScript objects
+  return response.json();
 }
 
 const request = async function (options: RequestsOptions) {

@@ -21,6 +21,24 @@ export interface RequestsOptions {
   page?: number;
 }
 
+export interface Searchable {
+  id: number;
+  group: 'people' | 'planets' | 'starships';
+  name: string;
+}
+
+export interface SearchablePerson extends Searchable {
+  group: 'people';
+}
+
+export interface SearchablePlanet extends Searchable {
+  group: 'planets';
+}
+
+export interface SearchableStarship extends Searchable {
+  group: 'starships';
+}
+
 export interface Peoples {
   count: number;
   next: string;
@@ -45,6 +63,9 @@ export interface People {
   created?: Date;
   edited?: Date;
   url: string;
+  homeworldSearchable?: SearchablePlanet;
+  starshipsSearchable?: SearchableStarship[];
+  starshipsNames?: string[];
 }
 
 export interface Planet {
@@ -62,6 +83,7 @@ export interface Planet {
   created?: Date;
   edited?: Date;
   url: string;
+  searchable?: SearchablePlanet;
 }
 
 export interface Starship {
@@ -83,6 +105,7 @@ export interface Starship {
   created?: Date;
   edited?: Date;
   url: string;
+  searchable?: SearchableStarship;
 }
 
 export interface ParamsPayload {
